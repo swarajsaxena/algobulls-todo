@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.App {
+	position: relative;
+	text-align: center;
+	/* background-color: #0f172a; */
+	min-height: 100vh;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	/* align-items: center; */
+	font-family: 'Inter', 'Sans Serif';
+
+	::selection {
+		background-color: black;
+		color: white;
+	}
+}
+
+.header {
+	padding: 2rem;
+	// border: 1px solid;
+	display: flex;
+	justify-content: space-between;
+
+	.logo {
+		font-weight: 800;
+		font-size: 1.5rem;
+	}
+
+	button {
+		background: rgba(0, 0, 0, 0.758);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
+		border: none;
+		cursor: pointer;
+
+		&:hover {
+			background-color: black;
+		}
+	}
+}
+
+// .addTodo {
+// 	position: absolute;
+// 	z-index: 999;
+// 	top: 0;
+// 	left: 0;
+// 	min-height: 100vh;
+// 	min-width: 100vw;
+
+// 	background: rgba(0, 0, 0, 0.492);
+// 	display: grid;
+// 	place-items: center;
+// }

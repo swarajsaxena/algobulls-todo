@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss'
+import 'antd/dist/antd.css'
+import Header from './Header'
+import AddTodo from './AddTodo'
+import { useEffect, useState } from 'react'
+import Main from './Main'
+import { uid } from 'uid'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [addTodo, setAddTodo] = useState(false)
+	const [todoList, setTodoList] = useState([
+		{
+			title: 'Make Tiffin',
+			description: 'It should contain parantha and mango shake.',
+			due_date: '2022-07-30',
+			tag: ['Kitchen', 'Home'],
+			status: 'Open',
+			key: uid(),
+			timestamp: '2022-07-08',
+		},
+		{
+			title: 'Get Vegies',
+			description: 'From the market.',
+			due_date: '2022-07-16',
+			tag: ['Market', 'Out'],
+			status: 'Done',
+			key: uid(),
+			timestamp: '2022-07-08',
+		},
+		{
+			title: 'Repair the bike',
+			description: 'Tools are in the garage.',
+			due_date: '2022-07-22',
+			tag: ['Home'],
+			status: 'Open',
+			key: uid(),
+			timestamp: '2022-07-08',
+		},
+		{
+			title: 'Do this project',
+			description: 'Colab with rahul and priya',
+			due_date: '2022-07-20',
+			tag: ['Office', 'Work'],
+			status: 'Open',
+			key: uid(),
+			timestamp: '2022-07-08',
+		},
+	])
+
+	useEffect(() => {
+		console.log(todoList)
+	}, [todoList])
+
+	return (
+		<div className='App'>
+			{addTodo ? (
+				<AddTodo
+					setTodoList={setTodoList}
+					todoList={todoList}
+					setAddTodo={setAddTodo}
+					addTodo={addTodo}
+				/>
+			) : (
+				<></>
+			)}
+			<Header setAddTodo={setAddTodo} addTodo={addTodo} />
+			<Main setTodoList={setTodoList} todoList={todoList} />
+		</div>
+	)
 }
 
-export default App;
+export default App

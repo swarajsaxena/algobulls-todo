@@ -102,7 +102,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 					<div className='font-semibold'>Discription</div>
 					<TextArea
 						onChange={(e) => {
-							if (e.target.value.length > 100 || e.target.value.length === 0) {
+							if (e.target.value.length > 1000 || e.target.value.length === 0) {
 								setFormValidity(false)
 								setdescError(
 									'Description should not be over 100 chars or less than 1 char'
@@ -114,6 +114,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 							setdesc(e.target.value)
 						}}
 						rows={4}
+						max={1000}
 						placeholder='Discription'
 						style={{ width: '400px', borderRadius: '0.25rem' }}
 					/>

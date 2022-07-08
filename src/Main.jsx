@@ -139,6 +139,16 @@ const Main = ({ todoList, setTodoList }) => {
 			title: 'Due Date',
 			dataIndex: 'due_date',
 			sorter: (a, b) => new Date(b.due_date) - new Date(a.due_date),
+			render: (due_date) =>
+				due_date ? (
+					<div className='tag flex items-center bg-black rounded-md text-white p-2 py-1 cursor-default w-max'>
+						{due_date}
+					</div>
+				) : (
+					<div className='tag flex items-center bg-black/10 rounded-md text-black p-2 py-1 cursor-default w-max'>
+						--
+					</div>
+				),
 		},
 		{
 			title: 'Tags',
@@ -146,13 +156,19 @@ const Main = ({ todoList, setTodoList }) => {
 			render: (data) => {
 				return (
 					<ul className='flex items-center gap-2 flex-wrap'>
-						{data.map((tag, index) => (
-							<li
-								key={index}
-								className='tag flex items-center bg-black rounded-md text-white p-2 py-1 cursor-default'>
-								<span className='tag-title capitalize'>{tag}</span>
+						{data ? (
+							data.map((tag, index) => (
+								<li
+									key={index}
+									className='tag flex items-center bg-black rounded-md text-white p-2 py-1 cursor-default'>
+									<span className='tag-title capitalize'>{tag}</span>
+								</li>
+							))
+						) : (
+							<li className='tag flex items-center bg-black/10 rounded-md text-black p-2 py-1 cursor-default'>
+								<span className='tag-title capitalize'>No Tags</span>
 							</li>
-						))}
+						)}
 					</ul>
 				)
 			},
@@ -219,17 +235,19 @@ const Main = ({ todoList, setTodoList }) => {
 					addonBefore='Search'
 					style={{ borderRadius: '0.25rem', padding: '0 1rem' }}
 				/>
-				<Table
-					pagination={{ position: ['bottomCenter'] }}
-					dataSource={dataSource.filter((todo) => {
-						if (searchText1 === '') {
-							return todo
-						} else if (todo.title.includes(searchText1)) {
-							return todo
-						}
-					})}
-					columns={columns}
-				/>
+				<div className='overflow-scroll overflow-y-hidden'>
+					<Table
+						pagination={{ position: ['bottomCenter'] }}
+						dataSource={dataSource.filter((todo) => {
+							if (searchText1 === '') {
+								return todo
+							} else if (todo.title.includes(searchText1)) {
+								return todo
+							}
+						})}
+						columns={columns}
+					/>
+				</div>
 			</div>
 		</main>
 	)

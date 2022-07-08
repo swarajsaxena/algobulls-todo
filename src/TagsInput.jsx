@@ -34,7 +34,11 @@ const TagsInput = (props) => {
 				<input
 					className='border-none outline-none'
 					type='text'
-					onKeyUp={(event) => (event.key === 'Enter' ? addTags(event) : null)}
+					onKeyUp={(event) =>
+						event.key === 'Enter' || event.key === 'Space'
+							? addTags(event)
+							: null
+					}
 					placeholder='Press enter to add tags'
 				/>
 			</ul>

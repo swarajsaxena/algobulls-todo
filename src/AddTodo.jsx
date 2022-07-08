@@ -94,7 +94,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 						}}
 						max={100}
 						placeholder='Title'
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 					/>
 					<div className='text-[#f9503d]'>{titleError}</div>
 				</div>
@@ -116,9 +116,9 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 						rows={4}
 						max={1000}
 						placeholder='Discription'
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 					/>
-					<div className='text-[#f9503d] max-w-[400px] text-left'>
+					<div className='text-[#f9503d] max-w-[300px] text-left'>
 						{descError}
 					</div>
 				</div>
@@ -135,7 +135,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 							}
 							setdate(dateString)
 						}}
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 						renderExtraFooter={() => 'extra footer'}
 					/>
 					<div className='text-[#f9503d]'>{dateError}</div>
@@ -155,7 +155,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 						onChange={(value) => setstatus(value)}
 						defaultValue='Open'
 						style={{
-							width: '400px',
+							width: '300px',
 							borderRadius: '0.25rem',
 							textAlign: 'left',
 						}}

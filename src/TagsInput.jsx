@@ -16,7 +16,7 @@ const TagsInput = (props) => {
 		}
 	}
 	return (
-		<div className='tags-input border-[#d9d9d9] border rounded w-[400px] flex items-start flex-col p-2'>
+		<div className='tags-input border-[#d9d9d9] border rounded w-[300px] flex items-start flex-col p-2'>
 			<ul id='tags' className='flex items-center gap-2 flex-wrap m-0'>
 				{tags.map((tag, index) => (
 					<li

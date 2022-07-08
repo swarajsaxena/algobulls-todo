@@ -29,6 +29,12 @@ const Main = ({ todoList, setTodoList }) => {
 		{
 			title: 'Timestamp',
 			dataIndex: 'timestamp',
+			render: (timestamp) => (
+				<div className=''>
+					<div>{timestamp.slice(0, 16)}</div>
+					<div>{timestamp.slice(18, 30)}</div>
+				</div>
+			),
 			sorter: (a, b) => new Date(b.timestamp) - new Date(a.timestamp),
 		},
 		{

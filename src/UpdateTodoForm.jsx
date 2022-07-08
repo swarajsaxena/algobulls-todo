@@ -85,7 +85,7 @@ const UpdateTodoForm = ({
 
 	return (
 		<div className='updateForm absolute top-0 left-0 min-h-screen grid z-50 min-w-full bg-black/50 place-items-center'>
-			<div className='modal shadow-2xl bg-white p-4 rounded flex items-start flex-col gap-4'>
+			<div className='m-2 modal shadow-2xl bg-white p-4 rounded flex items-start flex-col gap-4'>
 				<div className='font-bold text-2xl flex justify-between w-full items-center'>
 					<div>Update Todo</div>
 					<GoPlusSmall

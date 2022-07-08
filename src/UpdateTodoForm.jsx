@@ -1,12 +1,9 @@
-import { Input, Select, DatePicker, Space } from 'antd'
+import { Input, Select, DatePicker } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
-import { Option } from 'antd/lib/mentions'
 import React from 'react'
 import TagsInput from './TagsInput'
 import { GoPlusSmall } from 'react-icons/go'
 import { useState } from 'react'
-import { uid } from 'uid'
-import { useEffect } from 'react'
 import moment from 'moment'
 
 // const { RangePicker } = DatePicker
@@ -84,7 +81,7 @@ const UpdateTodoForm = ({
 	const dateFormat = 'YYYY-MM-DD'
 
 	return (
-		<div className='updateForm absolute top-0 left-0 min-h-screen grid z-50 min-w-full bg-black/50 place-items-center'>
+		<div className='addTodo absolute top-0 left-0 min-h-screen grid z-50 min-w-full bg-black/50 place-items-center'>
 			<div className='m-2 modal shadow-2xl bg-white p-4 rounded flex items-start flex-col gap-4'>
 				<div className='font-bold text-2xl flex justify-between w-full items-center'>
 					<div>Update Todo</div>
@@ -113,7 +110,7 @@ const UpdateTodoForm = ({
 						}}
 						max={100}
 						placeholder='Title'
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 					/>
 					<div className='text-[#f9503d]'>{titleError}</div>
 				</div>
@@ -135,9 +132,9 @@ const UpdateTodoForm = ({
 						}}
 						rows={4}
 						placeholder='Discription'
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 					/>
-					<div className='text-[#f9503d] max-w-[400px] text-left'>
+					<div className='text-[#f9503d] max-w-[300px] text-left'>
 						{descError}
 					</div>
 				</div>
@@ -156,7 +153,7 @@ const UpdateTodoForm = ({
 							}
 							setdate(dateString)
 						}}
-						style={{ width: '400px', borderRadius: '0.25rem' }}
+						style={{ width: '300px', borderRadius: '0.25rem' }}
 						renderExtraFooter={() => 'extra footer'}
 					/>
 					<div className='text-[#f9503d]'>{dateError}</div>
@@ -178,7 +175,7 @@ const UpdateTodoForm = ({
 						value={status}
 						defaultValue='Open'
 						style={{
-							width: '400px',
+							width: '300px',
 							borderRadius: '0.25rem',
 							textAlign: 'left',
 						}}
@@ -196,7 +193,7 @@ const UpdateTodoForm = ({
 							: 'bg-black/90 cursor-pointer'
 					}  w-full py-2 hover:bg-black text-white rounded `}
 					onClick={onSubmit}>
-					{!formValidity ? 'Disabled' : 'Submit'}
+					{!formValidity ? 'Disabled' : 'Update'}
 				</div>
 			</div>
 		</div>

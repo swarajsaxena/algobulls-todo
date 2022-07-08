@@ -1,14 +1,10 @@
-import { Input, Select, DatePicker, Space } from 'antd'
+import { Input, Select, DatePicker } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
-import { Option } from 'antd/lib/mentions'
 import React from 'react'
 import TagsInput from './TagsInput'
 import { GoPlusSmall } from 'react-icons/go'
 import { useState } from 'react'
 import { uid } from 'uid'
-import { useEffect } from 'react'
-
-const { RangePicker } = DatePicker
 
 const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 	const [formValidity, setFormValidity] = useState(true)
@@ -23,20 +19,6 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 	const [descError, setdescError] = useState('')
 	const [dateError, setdateError] = useState('')
 
-	const newDate = () => {
-		return (
-			new Date().getFullYear() +
-			'-' +
-			(new Date().getMonth() < 10
-				? '0' + (new Date().getMonth() + 1)
-				: new Date().getMonth()) +
-			'-' +
-			(new Date().getDate() < 10
-				? '0' + new Date().getDate()
-				: new Date().getDate())
-		)
-	}
-
 	const onclick = () => setAddTodo(!addTodo)
 
 	const onSubmit = () => {
@@ -45,7 +27,7 @@ const AddTodo = ({ setAddTodo, addTodo, todoList, setTodoList }) => {
 			setTodoList([
 				...todoList,
 				{
-					timestamp: newDate(),
+					timestamp: new Date().toUTCString(),
 					title,
 					description: desc,
 					due_date: date,

@@ -16,7 +16,7 @@ function App() {
 			tag: ['Kitchen', 'Home'],
 			status: 'Open',
 			key: uid(),
-			timestamp: '2022-07-08',
+			timestamp: new Date().toUTCString(),
 		},
 		{
 			title: 'Get Vegies',
@@ -25,7 +25,7 @@ function App() {
 			tag: ['Market', 'Out'],
 			status: 'Done',
 			key: uid(),
-			timestamp: '2022-07-08',
+			timestamp: new Date().toUTCString(),
 		},
 		{
 			title: 'Repair the bike',
@@ -34,7 +34,7 @@ function App() {
 			tag: ['Home'],
 			status: 'Open',
 			key: uid(),
-			timestamp: '2022-07-08',
+			timestamp: new Date().toUTCString(),
 		},
 		{
 			title: 'Do this project',
@@ -43,7 +43,7 @@ function App() {
 			tag: ['Office', 'Work'],
 			status: 'Open',
 			key: uid(),
-			timestamp: '2022-07-08',
+			timestamp: new Date().toUTCString(),
 		},
 	])
 

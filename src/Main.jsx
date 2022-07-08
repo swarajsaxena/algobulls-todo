@@ -1,8 +1,6 @@
-import { Button, Input, Space, Table } from 'antd'
-import React, { useEffect, useRef } from 'react'
-import { uid } from 'uid'
+import { Input, Table } from 'antd'
+import React, { useEffect } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
-import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react'
 import UpdateTodoForm from './UpdateTodoForm'
 
@@ -10,96 +8,6 @@ const Main = ({ todoList, setTodoList }) => {
 	const [dataSource, setDataSource] = useState(todoList)
 	const [searchText1, setSearchText1] = useState('')
 	const [updateTodoDetails, setUpdateTodoDetails] = useState(null)
-
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	const [searchText, setSearchText] = useState('')
-	const [searchedColumn, setSearchedColumn] = useState('')
-	const searchInput = useRef(null)
-
-	const handleSearch = (selectedKeys, confirm, dataIndex) => {
-		confirm()
-		setSearchText1(selectedKeys[0])
-		setSearchedColumn(dataIndex)
-	}
-
-	const handleReset = (clearFilters) => {
-		clearFilters()
-		setSearchText1('')
-	}
-
-	const getColumnSearchProps = (dataIndex) => ({
-		filterDropdown: ({
-			setSelectedKeys,
-			selectedKeys,
-			confirm,
-			clearFilters,
-		}) => (
-			<div
-				style={{
-					padding: 8,
-				}}>
-				<Input
-					ref={searchInput}
-					placeholder={`Search ${dataIndex}`}
-					value={selectedKeys[0]}
-					onChange={(e) =>
-						setSelectedKeys(e.target.value ? [e.target.value] : [])
-					}
-					onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-					style={{
-						marginBottom: 8,
-						display: 'block',
-					}}
-				/>
-				<Space>
-					<Button
-						type='primary'
-						onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-						// icon={<FiSearch />}
-						size='small'
-						style={{
-							width: 90,
-						}}>
-						Search
-					</Button>
-					<Button
-						onClick={() => clearFilters && handleReset(clearFilters)}
-						size='small'
-						style={{
-							width: 90,
-						}}>
-						Reset
-					</Button>
-				</Space>
-			</div>
-		),
-		filterIcon: (filtered) => (
-			<FiSearch
-				style={{
-					color: filtered ? '#1890ff' : undefined,
-				}}
-			/>
-		),
-		onFilter: (value, record) =>
-			record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-		onFilterDropdownVisibleChange: (visible) => {
-			if (visible) {
-				setTimeout(() => searchInput.current?.select(), 100)
-			}
-		},
-		render: (text) => (searchedColumn === dataIndex ? <></> : text),
-	})
-
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	useEffect(() => {
 		setDataSource(todoList)
@@ -133,6 +41,7 @@ const Main = ({ todoList, setTodoList }) => {
 		{
 			title: 'Description',
 			dataIndex: 'description',
+			render: (_) => <div className='max-w-[200px] italic'>{_}</div>,
 			sorter: (a, b) => a.description.localeCompare(b.description),
 		},
 		{
@@ -155,7 +64,7 @@ const Main = ({ todoList, setTodoList }) => {
 			dataIndex: 'tag',
 			render: (data) => {
 				return (
-					<ul className='flex items-center gap-2 flex-wrap'>
+					<ul className='flex items-center gap-2 flex-wrap m-0'>
 						{data ? (
 							data.map((tag, index) => (
 								<li
